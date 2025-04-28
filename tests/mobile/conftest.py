@@ -41,11 +41,15 @@ def android_management():
         )
 
     browser.config.timeout = config.timeout
+    """
+    Это для логирования в Allure каждый шаг
+    """
     browser.config._wait_decorator = support._logging.wait_with(
         context=allure_commons._allure.StepContext
     )
 
     yield
+
     utils.attach.attach_screenshot(browser)
     utils.attach.attach_xml(browser)
 
