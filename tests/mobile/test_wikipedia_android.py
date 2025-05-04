@@ -1,8 +1,15 @@
+import allure
 from allure_commons._allure import step
 from appium.webdriver.common.appiumby import AppiumBy
 from selene import browser, have
 
-
+@allure.title('Android Wiki Search Test')
+@allure.severity(allure.severity_level.NORMAL)
+@allure.description('Поиск в приложении Wikipedia на Android')
+@allure.label('owner', 'Yaroslav')
+@allure.epic('Википедия мобильное приложение Android')
+@allure.feature('Поиск с главной страницы')
+@allure.story('Поиск по слову Appium')
 def test_search(android_management):
 
     with step('Type search'):
@@ -15,6 +22,14 @@ def test_search(android_management):
         results.should(have.size_greater_than(0))
         results.first.should(have.text('Appium'))
 
+
+@allure.title('Android Wiki Article Test')
+@allure.severity(allure.severity_level.NORMAL)
+@allure.description('Поиск и открытие статьи в приложении Wikipedia на Android')
+@allure.label('owner', 'Yaroslav')
+@allure.epic('Википедия мобильное приложение Android')
+@allure.feature('Поиск с главной страницы')
+@allure.story('Поиск по слову Appium и клик на первый результат')
 def test_open_article(android_management):
 
     with step('Type search'):
@@ -30,6 +45,13 @@ def test_open_article(android_management):
             (AppiumBy.XPATH, '//android.widget.TextView[@text="Appium"]')
         )
 
+@allure.title('Android Wiki Onboarding Test')
+@allure.severity(allure.severity_level.NORMAL)
+@allure.description('Тестирование страницы "Getting Started" в приложении Wikipedia на Android')
+@allure.label('owner', 'Yaroslav')
+@allure.epic('Википедия мобильное приложение Android')
+@allure.feature('Тестирование страницы "Getting Started"')
+@allure.story('Тестирование страницы "Getting Started"')
 def test_getting_started(android_management):
 
     with ((step('Open second page'))):
